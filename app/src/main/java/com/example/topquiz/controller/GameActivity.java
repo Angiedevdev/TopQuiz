@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.TestLooperManager;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.example.topquiz.R;
 import com.example.topquiz.model.Question;
 import com.example.topquiz.model.QuestionBank;
+import com.example.topquiz.model.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,7 +43,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
         System.out.println("GameActivity::OnCreate()");
         mQuestionBank = this.generateQuestions();
-
         if (savedInstanceState != null) {
             mScore = savedInstanceState.getInt(BUNDLE_STATE_SCORE);
             mNumberOfQuestions = savedInstanceState.getInt(BUNDLE_STATE_QUESTION);
@@ -50,7 +51,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             mNumberOfQuestions = 15;
         }
         mEnableTouchEvents = true;
-
         mQuestionTxt = (TextView) findViewById(R.id.activity_game_question_text);
         mAnswer1Button = (Button) findViewById(R.id.activity_game_answer1_btn);
         mAnswer2Button = (Button) findViewById(R.id.activity_game_answer2_btn);
@@ -70,6 +70,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mCurrentQuestion = mQuestionBank.getQuestion();
         this.displayQuestion(mCurrentQuestion);
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(BUNDLE_STATE_SCORE, mScore);
@@ -77,6 +78,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onSaveInstanceState(outState);
     }
+
     @Override
     public void onClick(View v) {
         int responseIndex = (int) v.getTag();
@@ -98,12 +100,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     displayQuestion(mCurrentQuestion);
                 }
             }
-        }, 2500);
+        }, 500);
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         return mEnableTouchEvents && super.dispatchTouchEvent(ev);
     }
+
     private void endGame(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("C'est fini ! ")
@@ -111,8 +115,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        /**nous créons une instance de la la classe Intent ;*/
                         Intent intent = new Intent();
+                        /**nous attachons le score à l'Intent, avec la clé associée*/
                         intent.putExtra(BUNDLE_EXTRA_SCORE, mScore);
+                        /**Précise que l'activité est ok, en second paramètre notre Intent (qui contient le score)*/
                         setResult(RESULT_OK,intent);
                         finish();
                     }
@@ -120,6 +127,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .create()
                 .show();
     }
+
     private void displayQuestion(final Question question){
         mQuestionTxt.setText(question.getQuestion());
         mAnswer1Button.setText(question.getChoiceList().get(0));
@@ -127,6 +135,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswer3Button.setText(question.getChoiceList().get(2));
         mAnswer4Button.setText(question.getChoiceList().get(3));
     }
+
     private QuestionBank generateQuestions(){
         Question question1 = new Question("Quel est le nom du Président en 2020 ?",
                                           Arrays.asList("François Hollande", "Emmanuel Macron", "Jacques Chirac", "François Mitterand"),
@@ -209,6 +218,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                                               question19,
                                               question20));
     }
+
     @Override
     protected void onStart(){
         super.onStart();

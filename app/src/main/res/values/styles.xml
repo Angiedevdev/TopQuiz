@@ -1,11 +1,42 @@
 <resources>
 
-    <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorPrimary">@color/colorBlueGreenFirst</item>
+        <item name="colorPrimaryDark">@color/colorBlueGreenDark</item>
+        <item name="colorAccent">@color/colorAccentuationPink</item>
+
+    </style>
+
+    <style name="scoreJoueurTxt" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">15dp</item>
+    </style>
+
+    <style name="button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/colorAccentuationPink</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="titre" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorBlueGreenFirst</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">15dp</item>
+
+    </style>
+
+    <style name="FirstTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorBlueGreenDark</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_gravity">center_horizontal</item>
     </style>
 
 </resources>

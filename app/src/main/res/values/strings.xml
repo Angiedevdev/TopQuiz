@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">TopQuiz</string>
+    <string name="classement_title">Classement des joueurs</string>
+    <string name="greet_User">Bienvenue dans TopQuiz ! Quel est votre prénom ?</string>
+    <string name="hint_input_name">Tapez votre prénom ici :</string>
+    <string name="play_btn">C\'est parti !</string>
+    <string name="score_btn">Classement</string>
+    <string name="question_txt">Question ?</string>
+    <string name="answer_1_btn">Answer 1</string>
+    <string name="answer_2_btn">Answer 2</string>
+    <string name="answer_3_btn">Answer 3</string>
+    <string name="answer_4_btn">Answer 4</string>
+    <string name="high_score">HighScore</string>
+    <string name="alphabetic_score">A->Z</string>
 </resources>
