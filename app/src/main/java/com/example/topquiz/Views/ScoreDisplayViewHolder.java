@@ -16,13 +16,18 @@ import com.example.topquiz.model.User;
 
 public class ScoreDisplayViewHolder extends RecyclerView.ViewHolder {
 
-    TextView mTextView;
+    TextView mTextViewName;
+    TextView mTextViewScore;
 
     public ScoreDisplayViewHolder(@NonNull View itemView) {
         super(itemView);
+        mTextViewName = itemView.findViewById(R.id.txt_name);
+        mTextViewScore = itemView.findViewById(R.id.txt_score);
     }
 
     public void updateWithListUser(User user){
-        this.mTextView.setText(user.toString());
+        this.mTextViewName.setText(user.getFirstName());
+        this.mTextViewScore.setText(Integer.toString(user.getScore()));
+        //Ci dessus convertie en string
     }
 }

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        System.out.println("MainActivity::onCreate()");
 
         mPreferences = getSharedPreferences("Top_Quiz", MODE_PRIVATE);
 
@@ -53,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         mPlayButton.setEnabled(false);
         mScoreButton.setEnabled(false);
 
-        //TODO :A affiner... avec un if else dans la \M/ ?
         greetUser();
 
         mNameInput.addTextChangedListener(new TextWatcher() {
@@ -66,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
 
@@ -74,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             String firstname = mNameInput.getText().toString();
-            //TODO : >>Check if statement of add var *U* is ok here :
             mUser = new User();
             mUser.setFirstName(firstname);
 

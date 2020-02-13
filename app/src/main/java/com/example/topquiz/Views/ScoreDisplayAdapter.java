@@ -13,6 +13,7 @@ import com.example.topquiz.R;
 import com.example.topquiz.model.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,8 +23,9 @@ import java.util.ArrayList;
 
 public class ScoreDisplayAdapter extends RecyclerView.Adapter<ScoreDisplayViewHolder> {
 
-    private ArrayList<User> mUsersListScore;
-    public ScoreDisplayAdapter(ArrayList<User> mUsersListScore) {
+    private List<User> mUsersListScore;
+
+    public ScoreDisplayAdapter(List<User> mUsersListScore) {
         this.mUsersListScore = mUsersListScore;
     }
 

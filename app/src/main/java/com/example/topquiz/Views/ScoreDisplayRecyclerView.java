@@ -24,29 +24,30 @@ public class ScoreDisplayRecyclerView extends Fragment {
     private ScoreDisplayAdapter adapter;
     RecyclerView recyclerView;
 
-    public ScoreDisplayRecyclerView(){
+    public ScoreDisplayRecyclerView() {
     }
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_score, container, false);
+        recyclerView = view.findViewById(R.id.recycler_view_score_activity);
         this.configureRecyclerView();
         updateUI(mUsers);
         return view;
     }
 
-    public  void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
     }
 
-    public void configureRecyclerView(){
+    public void configureRecyclerView() {
         this.mUsers = new ArrayList<>();
         this.adapter = new ScoreDisplayAdapter(this.mUsers);
         this.recyclerView.setAdapter(this.adapter);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    private void updateUI(ArrayList<User> users){
+    private void updateUI(ArrayList<User> users) {
         mUsers.addAll(users);
         adapter.notifyDataSetChanged();
     }
 }
-
