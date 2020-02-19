@@ -13,7 +13,6 @@ public class AlphabeticComparator implements Comparator<User> {
     public int compare(User o1, User o2) {
         User u1 = (User) o1;
         User u2 = (User) o2;
-
-        return u1.getFirstName().compareTo(u2.getFirstName());
+        return u1.getFirstName().compareToIgnoreCase(u2.getFirstName());
     }
 }

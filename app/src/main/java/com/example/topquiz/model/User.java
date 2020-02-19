@@ -8,11 +8,6 @@ public class User {
    public User(){
    }
 
-   public User(String firstName, int score) {
-       mFirstName = firstName;
-       mScore = score;
-   }
-
    public String getFirstName() {
        return mFirstName;
    }

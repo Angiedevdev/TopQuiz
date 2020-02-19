@@ -3,4 +3,7 @@
     <color name="colorBlueGreenFirst">#008577</color>
     <color name="colorBlueGreenDark">#00574B</color>
     <color name="colorAccentuationPink">#D81B60</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FEFEFE</color>
+    <color name="colorBlackOpacity0">#1A000000</color>
 </resources>

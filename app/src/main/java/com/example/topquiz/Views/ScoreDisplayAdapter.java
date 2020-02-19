@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.topquiz.R;
 import com.example.topquiz.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +30,6 @@ public class ScoreDisplayAdapter extends RecyclerView.Adapter<ScoreDisplayViewHo
     @NonNull
     @Override
     public ScoreDisplayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//TODO : Besoin de tes lumières ici Thie : LayouteIflater, false etc...
 
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -45,6 +42,11 @@ public class ScoreDisplayAdapter extends RecyclerView.Adapter<ScoreDisplayViewHo
     public void onBindViewHolder(@NonNull ScoreDisplayViewHolder holder, int position) {
         holder.updateWithListUser(this.mUsersListScore.get(position));
     }
+
+    //@Override
+    //public int getItemViewType(int position) {
+       // return super.getItemViewType(5);
+  //  }
 
     @Override
     public int getItemCount() {

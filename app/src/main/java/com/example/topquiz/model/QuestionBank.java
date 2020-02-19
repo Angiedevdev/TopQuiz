@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public class QuestionBank {
+
     private List<Question> mQuestionList;
     private int mNextQuestionIndex;
 
@@ -17,6 +18,7 @@ public class QuestionBank {
         Collections.shuffle(mQuestionList);
         mNextQuestionIndex = 0;
     }
+
     public Question getQuestion() {
         if (mNextQuestionIndex == mQuestionList.size()) {
             mNextQuestionIndex = 0;

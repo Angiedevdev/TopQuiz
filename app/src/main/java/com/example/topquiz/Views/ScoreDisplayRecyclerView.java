@@ -20,6 +20,7 @@ import java.util.ArrayList;
  */
 
 public class ScoreDisplayRecyclerView extends Fragment {
+
     private ArrayList<User> mUsers;
     private ScoreDisplayAdapter adapter;
     RecyclerView recyclerView;

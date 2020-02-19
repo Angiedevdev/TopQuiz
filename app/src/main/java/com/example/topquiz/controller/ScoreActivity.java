@@ -1,29 +1,23 @@
 package com.example.topquiz.controller;
 
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.example.topquiz.R;
 import com.example.topquiz.Views.ScoreDisplayAdapter;
-import com.example.topquiz.Views.ScoreDisplayRecyclerView;
 import com.example.topquiz.model.AlphabeticComparator;
 import com.example.topquiz.model.HighScoreComparator;
 import com.example.topquiz.model.ListUserCreator;
 import com.example.topquiz.model.User;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -34,17 +28,15 @@ public class ScoreActivity extends AppCompatActivity {
     private Button mHighScore;
     private Button mAlphabetic;
 
-    public ListUserCreator mListUserCreator; // Celle ci
+    public ListUserCreator mListUserCreator;
     public SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
-        System.out.println("ScoreActivity::OnCreate()");
 
         mListScore = (RecyclerView) findViewById(R.id.recycler_view_score_activity);
-
         mHighScore = (Button) findViewById(R.id.activity_score_high_btn);
         mAlphabetic = (Button) findViewById(R.id.activity_score_alphabetic_btn);
 
@@ -52,31 +44,30 @@ public class ScoreActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = pref.getString(MainActivity.PREF_KEY_LISTUSERCREATOR, "");
         mListUserCreator = gson.fromJson(json, ListUserCreator.class);
-
-        DisplayScore(new HighScoreComparator());
+        displayScore(new HighScoreComparator());
         configureScoreDisplayRecyclerView();
 
         mHighScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayScore(new HighScoreComparator());
+                displayScore(new HighScoreComparator());
+                configureScoreDisplayRecyclerView();
             }
         });
 
         mAlphabetic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayScore(new AlphabeticComparator());
+                displayScore(new AlphabeticComparator());
+                configureScoreDisplayRecyclerView();
             }
         });
     }
-   public void DisplayScore(Comparator<User> userComparator) {
+
+    public void displayScore(Comparator<User> userComparator) {
        Gson gson = new Gson();
-       Log.e("List avant tri", gson.toJson(mListUserCreator.getUserList()));
        Collections.sort(mListUserCreator.getUserList(), userComparator);
-       Log.e("List après tri", gson.toJson(mListUserCreator.getUserList()));
     }
-    //TODO : + autre méthode DisplayScore cette fois sans le param pour ne pas le trier par défaut. juste dans l'ordre d'arrivée.
 
     public void configureScoreDisplayRecyclerView(){
         this.mListScore.setAdapter(new ScoreDisplayAdapter(this.mListUserCreator.getUserList()));

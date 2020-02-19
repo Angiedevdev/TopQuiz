@@ -2,22 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/shape"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
     <TextView
-    android:id="@+id/txt_name"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    style="@style/scoreJoueurTxt"
-    android:layout_weight="1"
-    android:text="@string/classement_title" />
+        android:id="@+id/txt_name"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        style="@style/ClassicalText"
+        android:layout_weight="1"
+        android:text="@string/classement_name" />
 
     <TextView
         android:id="@+id/txt_score"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        style="@style/scoreJoueurTxt"
+        android:layout_height="30dp"
+        style="@style/ClassicalText"
         android:layout_weight="1"
-        android:text="@string/classement_title" />
+        android:text="@string/classement_score" />
 
 </LinearLayout>

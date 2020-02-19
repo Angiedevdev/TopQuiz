@@ -1,27 +1,22 @@
 package com.example.topquiz.controller;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.TestLooperManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.topquiz.R;
 import com.example.topquiz.model.Question;
 import com.example.topquiz.model.QuestionBank;
-import com.example.topquiz.model.User;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener{
@@ -41,7 +36,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        System.out.println("GameActivity::OnCreate()");
         mQuestionBank = this.generateQuestions();
         if (savedInstanceState != null) {
             mScore = savedInstanceState.getInt(BUNDLE_STATE_SCORE);
@@ -75,7 +69,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onSaveInstanceState(Bundle outState) {
         outState.putInt(BUNDLE_STATE_SCORE, mScore);
         outState.putInt(BUNDLE_STATE_QUESTION, mNumberOfQuestions);
-
         super.onSaveInstanceState(outState);
     }
 
@@ -115,11 +108,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        /**nous créons une instance de la la classe Intent ;*/
                         Intent intent = new Intent();
-                        /**nous attachons le score à l'Intent, avec la clé associée*/
                         intent.putExtra(BUNDLE_EXTRA_SCORE, mScore);
-                        /**Précise que l'activité est ok, en second paramètre notre Intent (qui contient le score)*/
                         setResult(RESULT_OK,intent);
                         finish();
                     }
@@ -152,17 +142,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Question question5 = new Question("Où se couche le soleil ? ",
                                           Arrays.asList("Nord", "Sud", "Est", "Ouest"),
                                           3);
-        Question question6 = new Question("Trouve l'intru : ",
+        Question question6 = new Question("Trouve l'intrus : ",
                                           Arrays.asList("temps", "minute", "micron", "centimètre"),
                                           0);
         Question question7 = new Question("Qu'est-ce qui est le plus grand ? ",
                                           Arrays.asList("un continent", "une planète", "un village", "un moulin à vent"),
-                                          0);
+                                          1);
         Question question8 = new Question("Qui chante il en faut peu pour être heureux ? ",
                                           Arrays.asList("Baguerra", "Baloo", "Bouh", "Olaf"),
                                           1);
         Question question9 = new Question("Quel est l'animal terrestre le plus rapide ? ",
-                                          Arrays.asList("l'antilope", "le guépard", "le rinhocéros", "l'autruche"),
+                                          Arrays.asList("l'antilope", "le guépard", "le rhinocéros", "l'autruche"),
                                           1);
         Question question10 = new Question("Comment dit-on Bonjour en espagnol ? ",
                                           Arrays.asList("Hallo", "Hello", "Ni Hao", "Hola"),
@@ -173,7 +163,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Question question12 = new Question("Grâce à quoi on peut se connecter à Internet sans fil ? ",
                                           Arrays.asList("Bluetooth", "Ethernet", "Wifi", "Télépathie"),
                                           2);
-        Question question13 = new Question("Combien de pays existe-il en Europe ? ",
+        Question question13 = new Question("Combien de pays existe-il dans l'Union Européenne ? ",
                                            Arrays.asList("6", "12", "28", "32"),
                                            2);
         Question question14 = new Question("Sur quel continent se trouve le Canada ? ",
@@ -182,10 +172,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Question question15 = new Question("Comment s'appelle l'explorateur qui à découvert l'Amérique ? ",
                                            Arrays.asList("Christophe Collomb", "Gérard Collomb", "Amerigo Vespucci", "Vasco de Gama"),
                                            2);
-        Question question16 = new Question("Quel personnage est un personnage Disney? ",
+        Question question16 = new Question("Quel personnage provient de l'univers Disney? ",
                                            Arrays.asList("Tintin", "les Schtroumps", "les Trolls","Oswald"),
                                            3);
-        Question question17 = new Question("Lequel est un code de programmation ? ",
+        Question question17 = new Question("Lequel est un langage de programmation ? ",
                                            Arrays.asList("Python", "Crotal", "Vipère", "Orvet"),
                                            0);
         Question question18 = new Question("Comment s'appelle le fils dans les Simpsons? ",
@@ -217,31 +207,5 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                                               question18,
                                               question19,
                                               question20));
-    }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-        System.out.println("GameActivity::OnStart()");
-    }
-    @Override
-    protected void onResume(){
-        super.onResume();
-        System.out.println("GameActivity::OnResume()");
-    }
-    @Override
-    protected void onPause(){
-        super.onPause();
-        System.out.println("GameActivity::OnPause()");
-    }
-    @Override
-    protected void onStop(){
-        super.onStop();
-        System.out.println("GameActivity::OnStop()");
-    }
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        System.out.println("GameActivity::OnDestroy()");
     }
 }

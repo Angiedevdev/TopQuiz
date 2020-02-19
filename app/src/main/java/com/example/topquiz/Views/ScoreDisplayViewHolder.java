@@ -28,6 +28,5 @@ public class ScoreDisplayViewHolder extends RecyclerView.ViewHolder {
     public void updateWithListUser(User user){
         this.mTextViewName.setText(user.getFirstName());
         this.mTextViewScore.setText(Integer.toString(user.getScore()));
-        //Ci dessus convertie en string
     }
 }
