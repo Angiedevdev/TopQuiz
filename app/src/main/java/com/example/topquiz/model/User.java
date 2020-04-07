@@ -1,6 +1,5 @@
 package com.example.topquiz.model;
 
-
 public class User {
    private String mFirstName;
    private int mScore;
@@ -32,7 +31,8 @@ public class User {
                 '}';
     }
 
-
-
-
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

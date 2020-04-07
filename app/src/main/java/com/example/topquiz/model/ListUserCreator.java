@@ -1,6 +1,9 @@
 package com.example.topquiz.model;
 
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -10,7 +13,7 @@ import java.util.List;
 
 public class ListUserCreator {
 
-    public List<User> mUserList;
+    private List<User>  mUserList;
 
     public ListUserCreator (){
         mUserList = new ArrayList<User>();
@@ -20,8 +23,11 @@ public class ListUserCreator {
         return mUserList;
     }
 
-    public void addUser(User user){
-        mUserList.add(user);
+    public void addUser(User user) {
+            mUserList.add(user);
+    }
+    public void removeUser(User user) {
+        mUserList.remove(user);
     }
 }
 

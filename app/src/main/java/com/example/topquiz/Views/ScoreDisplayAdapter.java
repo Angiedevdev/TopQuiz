@@ -22,6 +22,7 @@ import java.util.List;
 public class ScoreDisplayAdapter extends RecyclerView.Adapter<ScoreDisplayViewHolder> {
 
     private List<User> mUsersListScore;
+    private int limitView = 5;
 
     public ScoreDisplayAdapter(List<User> mUsersListScore) {
         this.mUsersListScore = mUsersListScore;
@@ -43,13 +44,12 @@ public class ScoreDisplayAdapter extends RecyclerView.Adapter<ScoreDisplayViewHo
         holder.updateWithListUser(this.mUsersListScore.get(position));
     }
 
-    //@Override
-    //public int getItemViewType(int position) {
-       // return super.getItemViewType(5);
-  //  }
-
     @Override
     public int getItemCount() {
-        return this.mUsersListScore.size();
+        if(mUsersListScore.size() > limitView) {
+            return limitView;
+        } else {
+            return this.mUsersListScore.size();
+        }
     }
 }

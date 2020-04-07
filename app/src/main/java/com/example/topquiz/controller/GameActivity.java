@@ -85,13 +85,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mEnableTouchEvents = true;
-                if (--mNumberOfQuestions == 0) {
-                    endGame();
-                } else {
-                    mCurrentQuestion = mQuestionBank.getQuestion();
-                    displayQuestion(mCurrentQuestion);
-                }
+            mEnableTouchEvents = true;
+            if (--mNumberOfQuestions == 0) {
+                endGame();
+            } else {
+                mCurrentQuestion = mQuestionBank.getQuestion();
+                displayQuestion(mCurrentQuestion);
+            }
             }
         }, 500);
     }

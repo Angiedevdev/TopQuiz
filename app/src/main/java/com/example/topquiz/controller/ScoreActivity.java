@@ -2,9 +2,9 @@ package com.example.topquiz.controller;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -65,7 +65,6 @@ public class ScoreActivity extends AppCompatActivity {
     }
 
     public void displayScore(Comparator<User> userComparator) {
-       Gson gson = new Gson();
        Collections.sort(mListUserCreator.getUserList(), userComparator);
     }
 

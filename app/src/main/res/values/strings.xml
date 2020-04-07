@@ -14,4 +14,5 @@
     <string name="answer_4_btn">Answer 4</string>
     <string name="high_score">HighScore</string>
     <string name="alphabetic_score">A->Z</string>
+    <string name="delete">Suppression des données</string>
 </resources>
